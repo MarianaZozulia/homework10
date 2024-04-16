@@ -32,6 +32,6 @@ describe('Test the user Sign Up', () => {
     cy.get('input#signupRepeatPassword').type(repeatPassword).should('have.value',repeatPassword);
     cy.get('button').contains('Register').click();
     cy.get('a.btn-sidebar.-profile').contains('Profile').click();
-    cy.get('p.profile_name.display-4').should('have.text', testName +' undefined');
+    cy.get('p.profile_name.display-4').should('have.text', testName + ' ' + lastName);
   })
 })
