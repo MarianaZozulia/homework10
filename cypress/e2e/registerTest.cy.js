@@ -39,8 +39,5 @@ describe('Test the user Sign Up', () => {
     HomePage.registerButton.click();
     ProfilePage.profileButton.click();
     ProfilePage.displayUserFullName(name,lastName);
-    cy.get(`a`).contains(`Fuel expenses `).click();
-
-
   })
 })
