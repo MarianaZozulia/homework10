@@ -64,7 +64,7 @@ export default class BasePage{
     }
 
     static get sidebarLogOutItem(){
-        return cy.get(`a[_ngcontent-whv-c65]`).contains(' Log out ');
+        return cy.get(`span.icon-logout`,{timeout:10000});
     }
 
     static get footerData(){

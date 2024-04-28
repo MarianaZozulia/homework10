@@ -1,6 +1,9 @@
 /// <reference types="cypress" />
 import HomePage from "../../pages/HomePage";
 import ProfilePage from "../../pages/ProfilePage";
+import BasePage from "../../pages/BasePage";
+import {generalStep} from "../../steps/general-step";
+
 function generateRandomEmail() {
   const domain = 'mariana.com';
   const length = 10;
@@ -29,15 +32,38 @@ const user={
   repeatPassword: password,
 }
 
-describe('Test the user Sign Up', () => {
+describe('Test Suite', () => {
 
-  it('Check the registration', () => {
+  beforeEach(() => {
     cy.visit(`/`);
-    HomePage.signUpButton.should('exist');
-    HomePage.signUpButton.click();
-    HomePage.createAccount(user);
-    HomePage.registerButton.click();
-    ProfilePage.profileButton.click();
-    ProfilePage.displayUserFullName(name,lastName);
+    generalStep.login('mariana@mariana.com', 'QTdvXj4!FSsuH2')
+    generalStep.verifyLoginButtonIsVisible();
+  });
+
+  it('Check the sign in Garage service', () => {
+    //cy.url().should('include', 'panel/garage');
+    cy.log(password);
+  });
+
+});
+
+
+ /* beforeEach(()=>{
+    cy.visit(`/`);
+    generalStep.login()
+  });
+/*
+  afterEach(()=>{
+    cy.log(email);
+  });
+
+  after(()=>{
+
   })
-})
+
+
+  it('Check the sign in Garage service', () => {
+    cy.url().should('include', 'panel/garage');
+  })
+
+})*/

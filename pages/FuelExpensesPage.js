@@ -2,7 +2,7 @@ import BasePage from "./BasePage";
 
 export default class FuelExpensesPage extends BasePage{
 
-    static get FuelExpensesTitle(){
+    static get fuelExpensesTitle(){
         return cy.get(`h1`).contains('Fuel expenses');
     }
 

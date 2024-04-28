@@ -13,10 +13,6 @@ export default class GaragePage extends BasePage{
         return cy.get(`p.h3.panel-empty_message`);
     }
 
-    static get addCarButton(){
-        return cy.get(`button`).contains('Add car');
-    }
-
     static get addCarModalTitle(){
         return cy.get(`h4`).contains('Add a car');
     }
@@ -34,6 +30,10 @@ export default class GaragePage extends BasePage{
         return cy.get(`input#addCarMileage`);
     }
 
+    static get addCarModalButton(){
+        return cy.get(`.modal-footer > .btn-primary`).contains('Add');
+    }
+
     static get carLogo(){
         return cy.get(`div.car_logo`);
     }
@@ -43,10 +43,10 @@ export default class GaragePage extends BasePage{
     }
 
     static get editCarButton(){
-        return cy.get(`button.cer_edit`);
+        return cy.get(`button.car_edit.btn.btn-edit`);
     }
 
-    static get AddFuelExpenseButton(){
+    static get addFuelExpenseButton(){
         return cy.get(`button`).contains('Add fuel expense');
     }
 
@@ -76,10 +76,6 @@ export default class GaragePage extends BasePage{
 
     static get editCarDatepicker(){
         return cy.get(`button.btn.date-picker-toggle`);
-    }
-
-    static get removeCarButton(){
-        cy.get(`button`).contains('Remove car');
     }
 
     static get removeCarModalTitle(){
@@ -116,6 +112,15 @@ export default class GaragePage extends BasePage{
     static get addExpenseTotalCost(){
         return cy.get(`input#addExpenseTotalCost`);
     }
+
+    static get datePickerButton(){
+        return cy.get(`button.btn.date-picker-toggle`);
+    }
+
+    static get addExpenseModalButton(){
+        return cy.get(`.modal-footer > .btn-primary`).contains('Add');
+    }
+
 
 
 
