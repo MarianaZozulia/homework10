@@ -5,5 +5,9 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
+    baseUrl: `https://guest:welcome2qauto@qauto2.forstudy.space`,
+    testIsolation: false,
   },
+  //experimentalStudio: true
+
 });
