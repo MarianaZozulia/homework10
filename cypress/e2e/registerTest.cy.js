@@ -31,12 +31,14 @@ const user={
   password: password,
   repeatPassword: password,
 }
+const loginEmail='mariana@mariana.com';
+const loginPassword='QTdvXj4!FSsuH2';
 
 describe('Test Suite', () => {
 
   beforeEach(() => {
     cy.visit(`/`);
-    generalStep.login('mariana@mariana.com', 'QTdvXj4!FSsuH2')
+    generalStep.login(loginEmail, loginPassword);
     generalStep.verifyLoginButtonIsVisible();
   });
 

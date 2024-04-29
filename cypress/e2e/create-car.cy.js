@@ -15,6 +15,8 @@ const fuelExpense={
     liters: '10',
     cost: '500'
 }
+const email='mariana@mariana.com';
+const password='QTdvXj4!FSsuH2';
 
 function parseDate(){
     let currentDate = new Date();
@@ -28,7 +30,7 @@ describe('Test Suite', () => {
 
     before(() => {
         cy.visit(`/`);
-        generalStep.login('mariana@mariana.com', 'QTdvXj4!FSsuH2')
+        generalStep.login(email, password);
         generalStep.verifyLoginButtonIsVisible();
     });
 
