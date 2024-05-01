@@ -31,8 +31,6 @@ export class GarageStep extends GeneralStep{
     }
     addAnExpense(fuelExpense){
         GaragePage.addFuelExpenseButton.eq(0).click();
-        //GaragePage.datePickerButton.click();
-        // this.datePicker(day,month,year);
         GaragePage.addExpenseVehicle.select(0);
         GaragePage.addExpenseReportDate.clear().type(fuelExpense.date);
         GaragePage.addExpenseMileage.clear().type(fuelExpense.mileage+0.5);
@@ -42,6 +40,11 @@ export class GarageStep extends GeneralStep{
     }
     checkFuelExpenseIsAdded(){
         baseButtons.successMessage().should(`be.visible`);
+    }
+
+    selectDateFromDataPicker(){
+        GaragePage.addFuelExpenseButton.eq(0).click();
+        GaragePage.datePickerButton.click();
     }
 
 }

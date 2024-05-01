@@ -42,30 +42,61 @@ describe('Test Suite', () => {
     generalStep.verifyLoginButtonIsVisible();
   });
 
-  it('Check the sign in Garage service', () => {
-    //cy.url().should('include', 'panel/garage');
-    cy.log(password);
+  it('Login via API`',()=>{
+    cy.intercept('GET','/api/cars', (req)=>{
+      req.reply(res => {
+        res.statusCode=404;
+        res.body='NOT FOUND';
+      });
+    }).as('allCar');
+    cy.visit(`/`);
+    //cy.wait('@allCars').its('response.statusCode').should('eq',200);
+    /*cy.wait('@allCars').then((res)=>{
+      cy.log(JSON.stringify(res));
+      cy.log(res.response.body.data[0].carBrandId);
+    })*/
+  })
+
+  it.skip(`Login via API`, ()=>{
+    cy.request({
+      method: 'POST',
+      url: '/api/auth/signin',
+      headers: {
+        "accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      body:
+      {
+        "email": "mariana@mariana.com",
+        "password": "QTdvXj4!FSsuH2",
+        "remember": false
+      }
+    }).as('login');
+
+    cy.wait('@login');
+
+
+    /*cy.wait('@login').then(()=>{
+
+    })*/
+  });
+
+  it.skip('GET /users/current', () => {
+    //cy.request('/users/current').its('body').should('include','status');
+    //cy.request('/users/current').then((res)=>{
+    cy.request('GET','/cars/brands').as('getAllCars');
+    //cy.get('@getAllCars');
+    cy.wait('@getAllCars').then((xhr) => {
+      const response=xhr.responseWaited;
+      cy.log(JSON.stringify(response));
+    });
+
+      //expect(body).to.have.property('status');
+      //expect(body).to.have.property('data');
+     // cy.log(JSON.stringify(res));
+      //cy.log(JSON.stringify(res.body));
+
   });
 
 });
 
-
- /* beforeEach(()=>{
-    cy.visit(`/`);
-    generalStep.login()
-  });
-/*
-  afterEach(()=>{
-    cy.log(email);
-  });
-
-  after(()=>{
-
-  })
-
-
-  it('Check the sign in Garage service', () => {
-    cy.url().should('include', 'panel/garage');
-  })
-
-})*/

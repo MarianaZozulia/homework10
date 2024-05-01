@@ -1,6 +1,8 @@
 import {generalStep} from "../../steps/general-step";
 import {garageStep} from "../../steps/garage-step";
 import {fuelExpensesStep} from "../../steps/fuel-expenses-step";
+import GaragePage from "../../pages/GaragePage";
+import {baseButtons} from "../../pages/BaseButtons";
 
 const car={
     brand: 'Ford',
@@ -26,6 +28,16 @@ function parseDate(){
     return day + '.' + month + '.' + year;
 }
 
+function parseDateFromDataPicker(targetDate){
+    const formattedDate=targetDate.toLocaleString(`en-US`,{
+        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'});
+
+    cy.get(`.modal-body`).within(()=>{
+        cy.get('.ngb-dp-day[aria-label="' + formattedDate + '"]')
+            .should(`be.visible`).click()
+    });
+}
+
 describe('Test Suite', () => {
 
     before(() => {
@@ -37,13 +49,21 @@ describe('Test Suite', () => {
     it('Check the adding new car',()=>{
         garageStep.addNewCar(car)
         garageStep.checkCarIsAdded();
-        //garageStep.addAnExpense('1', 'Apr', '2023');
     });
 
     it('Check the car removing',()=>{
         garageStep.removeCar();
         garageStep.checkCarIsDeleted();
 
+    });
+
+    it(`Check the date is selected from dataPicker`,()=>{
+        const today=new Date();
+        const tomorrow=new Date(today);
+        tomorrow.setDate(tomorrow.getDate()+1);
+        garageStep.selectDateFromDataPicker();
+        parseDateFromDataPicker(tomorrow);
+        baseButtons.baseModalCloseButton().click();
     });
 
     it('Check the adding the fuel expense', () => {

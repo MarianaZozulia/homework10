@@ -14,14 +14,5 @@ export class GeneralStep{
 
     }
 
-    /*datePicker(day, month, year){
-        cy.get(`select[title="Select month"]`).select(month);
-        cy.get(`select[title="Select year"]`).select(year);
-        cy.get(`ngb-datepicker-month`).within(()=>{
-            cy.get(`div[ngbdatepickerdayview]`).invoke
-            ('val').should(day).click();
-        })
-
-    }*/
 }
 export const generalStep=new GeneralStep();
