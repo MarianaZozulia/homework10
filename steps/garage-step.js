@@ -47,5 +47,31 @@ export class GarageStep extends GeneralStep{
         GaragePage.datePickerButton.click();
     }
 
+    checkNewCarAddedViaAPI(carData){
+        cy.request({
+            method: 'GET',
+            url: '/api/cars'
+        }).then((res)=> {
+            expect(res.status).to.eq(200);
+            const allCars = res.body;
+            cy.wrap(res.body.data.id).as('carId');
+            let isCarCreated = false;
+            cy.get('@carId').then((carId)=>{
+                allCars.data.forEach(car => {
+                if (carData.id === carId) {
+                    expect(car.brand).to.eq(carData.brand);
+                    expect(car.model).to.eq(carData.model);
+                    expect(car.mileage).to.eq(carData.mileage);
+                    isCarCreated = true;
+                }
+            });
+                expect(isCarCreated).to.be.true;
+            });
+
+            });
+
+    }
+
+
 }
 export const garageStep = new GarageStep();
