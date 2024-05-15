@@ -4,8 +4,7 @@ import {fuelExpensesStep} from "../../steps/fuel-expenses-step";
 import GaragePage from "../../pages/GaragePage";
 import {baseButtons} from "../../pages/BaseButtons";
 
-const today = new Date();
-const tomorrow = new Date(today);
+
 
 const carData={
     brand: 'Ford',
@@ -14,7 +13,7 @@ const carData={
 }
 
 const expenseData = {
-    "reportedAt": "2024-05-12",
+    "reportedAt": "2024-05-13",
     "mileage": 20,
     "liters": 11,
     "totalCost": 11,
@@ -78,12 +77,7 @@ describe('Test Suite', () => {
 
         });
 
-        it.skip(`Check the date is selected from dataPicker`, () => {
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            garageStep.selectDateFromDataPicker();
-            cy.parseDateFromDataPicker(tomorrow);
-            baseButtons.baseModalCloseButton().click();
-        });
+
 
         it.skip('Check the expense removing', () => {
             fuelExpensesStep.deleteExpense();
