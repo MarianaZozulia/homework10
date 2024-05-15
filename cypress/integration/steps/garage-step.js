@@ -72,11 +72,5 @@ export class GarageStep extends GeneralStep{
 
     }
 
-    writeCarsInFile(carId,alias){
-
-
-
-    }
-
 }
 export const garageStep = new GarageStep();
