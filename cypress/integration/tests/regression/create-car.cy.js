@@ -13,7 +13,7 @@ const carData={
 }
 
 const expenseData = {
-    "reportedAt": "2024-05-13",
+    "reportedAt": "2024-05-15",
     "mileage": 20,
     "liters": 11,
     "totalCost": 11,
@@ -36,24 +36,21 @@ let carId;
 describe('Test Suite', () => {
 
     before(() => {
-        cy.visit(`/`);
+        generalStep.openMainPage();
         generalStep.login(email, password);
         generalStep.verifyLoginButtonIsVisible();
     });
 
     it('Check the adding new car', () => {
-
         cy.intercept('POST', 'api/cars').as('addCar');
         garageStep.addNewCar(carData);
-
         cy.wait('@addCar').then((response) => {
             const res = response.response;
-            cy.writeFile('cypress/fixtures/carsResponseData.json', res);
+            cy.writeFile('cypress/integration/fixtures/carsResponseData.json', res);
             cy.wrap(res.body.data.id).then(id => {
                 carId = id;
             });
         });
-
         garageStep.checkNewCarAddedViaAPI(carData, carId);
     });
 
@@ -63,10 +60,10 @@ describe('Test Suite', () => {
     });
 
     it('Check the expense is added from API',()=>{
-        cy.visit(`/`);
+        generalStep.openMainPage();
         generalStep.login(email, password);
         generalStep.verifyLoginButtonIsVisible();
-        cy.visit('/panel/expenses');
+        generalStep.openExpensesPage();
         fuelExpensesStep.findTheAddedCarFromAPI(carData,expenseData);
 
     })
@@ -76,8 +73,6 @@ describe('Test Suite', () => {
             garageStep.checkCarIsDeleted();
 
         });
-
-
 
         it.skip('Check the expense removing', () => {
             fuelExpensesStep.deleteExpense();

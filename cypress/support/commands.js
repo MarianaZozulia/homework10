@@ -1,5 +1,5 @@
-import HomePage from "../../pages/HomePage";
-import {baseButtons} from "../../pages/BaseButtons";
+import HomePage from "../integration/pages/HomePage";
+import {baseButtons} from "../integration/pages/BaseButtons";
 Cypress.Commands.add('loginViaAPI',(email,password, remember=false)=>{
     cy.request({
         method: 'POST',
