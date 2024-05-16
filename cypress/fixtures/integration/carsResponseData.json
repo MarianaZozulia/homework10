@@ -1,7 +1,7 @@
 {
   "headers": {
     "server": "nginx/1.18.0 (Ubuntu)",
-    "date": "Sun, 12 May 2024 21:12:02 GMT",
+    "date": "Wed, 15 May 2024 20:16:15 GMT",
     "content-type": "application/json; charset=utf-8",
     "content-length": "238",
     "connection": "keep-alive",
@@ -9,7 +9,7 @@
     "access-control-allow-origin": "https://qauto2.forstudy.space",
     "vary": "Origin",
     "access-control-allow-credentials": "true",
-    "etag": "W/\"ee-+8kjgcmEV7aED+1nH7w61Sz63Rg\""
+    "etag": "W/\"ee-MNR+G4cXZZcG/2bNdgPpJhBAaRc\""
   },
   "url": "https://qauto2.forstudy.space/api/cars",
   "method": null,
@@ -19,12 +19,12 @@
   "body": {
     "status": "ok",
     "data": {
-      "id": 119925,
+      "id": 120063,
       "carBrandId": 3,
       "carModelId": 13,
       "initialMileage": 10,
-      "updatedMileageAt": "2024-05-12T21:12:02.756Z",
-      "carCreatedAt": "2024-05-12T21:12:02.756Z",
+      "updatedMileageAt": "2024-05-15T20:16:15.066Z",
+      "carCreatedAt": "2024-05-15T20:16:15.066Z",
       "mileage": 10,
       "brand": "Ford",
       "model": "Fusion",

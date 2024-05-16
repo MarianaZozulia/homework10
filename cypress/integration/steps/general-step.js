@@ -3,6 +3,14 @@ import BasePage from "../pages/BasePage";
 import {baseButtons} from "../pages/BaseButtons";
 
 export class GeneralStep{
+
+    openMainPage(){
+      cy.visit(`/`);
+    }
+
+    openExpensesPage(){
+      cy.visit('/panel/expenses');
+    }
     login(email,password){
       HomePage.signInButton.click();
       HomePage.signInEmail.type(email);

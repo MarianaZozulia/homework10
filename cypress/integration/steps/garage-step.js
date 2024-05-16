@@ -72,6 +72,5 @@ export class GarageStep extends GeneralStep{
 
     }
 
-
 }
 export const garageStep = new GarageStep();
