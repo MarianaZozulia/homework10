@@ -12,7 +12,7 @@ describe('Test Suite', () => {
 
     before(() => {
         cy.visit(`/`);
-        generalStep.login(email, password);
+        generalStep.loginViaAPI(email, password);
         generalStep.verifyLoginButtonIsVisible();
     });
 
