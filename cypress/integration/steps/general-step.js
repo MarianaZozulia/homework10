@@ -5,7 +5,7 @@ import {baseButtons} from "../pages/BaseButtons";
 export class GeneralStep{
 
     openMainPage(){
-      cy.visit(`/`);
+      cy.visit(Cypress.env('baseUrl'));
     }
 
     openExpensesPage(){

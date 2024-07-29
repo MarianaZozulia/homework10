@@ -11,8 +11,8 @@ const password='QTdvXj4!FSsuH2';
 describe('Test Suite', () => {
 
     before(() => {
-        cy.visit(`/`);
-        generalStep.loginViaAPI(email, password);
+        cy.visit(Cypress.env('baseUrl'));
+        generalStep.login(email, password);
         generalStep.verifyLoginButtonIsVisible();
     });
 

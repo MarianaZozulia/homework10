@@ -1,15 +1,15 @@
 {
   "headers": {
     "server": "nginx/1.18.0 (Ubuntu)",
-    "date": "Wed, 15 May 2024 20:30:05 GMT",
+    "date": "Sat, 27 Jul 2024 20:54:33 GMT",
     "content-type": "application/json; charset=utf-8",
-    "content-length": "238",
+    "content-length": "232",
     "connection": "keep-alive",
     "x-powered-by": "Express",
     "access-control-allow-origin": "https://qauto2.forstudy.space",
     "vary": "Origin",
     "access-control-allow-credentials": "true",
-    "etag": "W/\"ee-PgoYPd+pNUp+YzbNVtAWSU1iSMk\""
+    "etag": "W/\"e8-/By4vOsZIfKZKWa5B9rbK0vZ0qw\""
   },
   "url": "https://qauto2.forstudy.space/api/cars",
   "method": null,
@@ -19,16 +19,16 @@
   "body": {
     "status": "ok",
     "data": {
-      "id": 120071,
-      "carBrandId": 3,
-      "carModelId": 13,
-      "initialMileage": 10,
-      "updatedMileageAt": "2024-05-15T20:30:05.544Z",
-      "carCreatedAt": "2024-05-15T20:30:05.544Z",
-      "mileage": 10,
-      "brand": "Ford",
-      "model": "Fusion",
-      "logo": "ford.png"
+      "id": 122868,
+      "carBrandId": 2,
+      "carModelId": 10,
+      "initialMileage": 42,
+      "updatedMileageAt": "2024-07-27T20:54:33.887Z",
+      "carCreatedAt": "2024-07-27T20:54:33.887Z",
+      "mileage": 42,
+      "brand": "BMW",
+      "model": "Z3",
+      "logo": "bmw.png"
     }
   }
 }

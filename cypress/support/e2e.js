@@ -17,5 +17,6 @@
 import './commands'
 require('cypress-xpath');
 import 'cypress-plugin-api'
+import '@faker-js/faker'
 // Alternatively you can use CommonJS syntax:
 //require('./commands');

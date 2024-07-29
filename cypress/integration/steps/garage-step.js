@@ -1,8 +1,13 @@
 import {GeneralStep} from "./general-step";
 import GaragePage from "../pages/GaragePage";
 import {baseButtons} from "../pages/BaseButtons";
-
+import {UrlsOfPages} from "../data/constant/Urls-of-pages";
+const urlOfPages=new UrlsOfPages();
 export class GarageStep extends GeneralStep{
+
+    visitUrl(id=undefined){
+        cy.visit(urlOfPages.envPage(id));
+    }
 
     addNewCar(car){
         baseButtons.baseButton('Add car').click();

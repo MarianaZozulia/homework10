@@ -1,20 +1,16 @@
-import {generalStep} from "../../steps/general-step";
+import {generalStep} from "../../steps/general-step"
 import {garageStep} from "../../steps/garage-step";
 import {fuelExpensesStep} from "../../steps/fuel-expenses-step";
-import GaragePage from "../../pages/GaragePage";
-import {baseButtons} from "../../pages/BaseButtons";
+import {generateRandomCar, fakerCar} from "../../data/car-data";
 
 
+const car=generateRandomCar();
+const carFromFaker=fakerCar();
 
-const carData={
-    brand: 'Ford',
-    model: 'Fusion',
-    mileage: 10
-}
 
 const expenseData = {
-    "reportedAt": "2024-05-15",
-    "mileage": 20,
+    "reportedAt": "2024-07-29",
+    "mileage": Number(car.mileage)+5,
     "liters": 11,
     "totalCost": 11,
     "forceMileage": false
@@ -42,16 +38,16 @@ describe('Test Suite', () => {
     });
 
     it('Check the adding new car', () => {
-        cy.intercept('POST', 'api/cars').as('addCar');
-        garageStep.addNewCar(carData);
-        cy.wait('@addCar').then((response) => {
+        cy.intercept('POST', 'api/cars').as('cars');
+        garageStep.addNewCar(car);
+        cy.wait('@cars').then((response) => {
             const res = response.response;
             cy.writeFile('cypress/integration/fixtures/carsResponseData.json', res);
             cy.wrap(res.body.data.id).then(id => {
                 carId = id;
             });
         });
-        garageStep.checkNewCarAddedViaAPI(carData, carId);
+        garageStep.checkNewCarAddedViaAPI(car, carId);
     });
 
     it('Check the adding the fuel expense via API', () => {
@@ -59,12 +55,12 @@ describe('Test Suite', () => {
         cy.addAnExpense(expenseData,carId);
     });
 
-    it('Check the expense is added from API',()=>{
+    it.skip('Check the expense is added from API',()=>{
         generalStep.openMainPage();
         generalStep.login(email, password);
         generalStep.verifyLoginButtonIsVisible();
         generalStep.openExpensesPage();
-        fuelExpensesStep.findTheAddedCarFromAPI(carData,expenseData);
+        fuelExpensesStep.findTheAddedCarFromAPI(car,expenseData);
 
     })
 

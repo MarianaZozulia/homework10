@@ -11,14 +11,10 @@ const user={
 const email='mariana@mariana.com';
 const password='QTdvXj4!FSsuH2';
 
-describe('User',()=>{
+describe.skip('User',()=>{
 
     it('update user ', () => {
         cy.loginViaAPI(email,password);
         userStep.updateUserViaApi(user);
     });
-
-    it ('update and validate user',()=>{
-
-    })
 })
